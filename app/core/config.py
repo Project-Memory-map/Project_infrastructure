@@ -29,6 +29,11 @@ class Settings(BaseSettings):
 
     cors_origins: list[str] = ["http://localhost:8000", "http://127.0.0.1:8000"]
 
+    # Facebook OAuth – US-ACC-004
+    facebook_client_id: str = ""
+    facebook_client_secret: str = ""
+    facebook_redirect_uri: str = "http://localhost:8000/api/auth/facebook/callback"
+
     @property
     def database_url(self) -> str:
         return (
