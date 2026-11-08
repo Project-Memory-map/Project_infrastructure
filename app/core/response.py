@@ -14,4 +14,12 @@ def build_response(status_code: int, message: str, request: Request, data=None, 
         "path": request.url.path,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
-    return JSONResponse(status_code=status_code, content=jsonable_encoder(body))
+    return JSONResponse(
+        status_code=status_code,
+        content=jsonable_encoder(body),
+        headers={
+            "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+            "Pragma": "no-cache",
+            "Expires": "0",
+        },
+    )

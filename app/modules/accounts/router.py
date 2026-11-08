@@ -27,6 +27,11 @@ def read_me(request: Request, current_user: User = Depends(get_current_user)):
     return build_response(200, "Lấy thông tin tài khoản thành công", request, data=data)
 
 
+@router.post("/logout", summary="Đăng xuất khỏi hệ thống", dependencies=[Depends(get_current_user)])
+def logout(request: Request):
+    return build_response(200, "Đăng xuất thành công", request)
+
+
 # ── US-ACC-004: Đăng nhập bằng Facebook ───────────────────────
 
 
